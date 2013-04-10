@@ -40,51 +40,51 @@ namespace TheButcher
         /// <param name="args">The <see cref="SharpGL.SceneGraph.OpenGLEventArgs"/> instance containing the event data.</param>
         private void openGLControl_OpenGLDraw(object sender, OpenGLEventArgs args)
         {
-            //  Get the OpenGL object.
-            OpenGL gl = openGLControl.OpenGL;
-            gl.Enable(OpenGL.GL_TEXTURE_3D);
-            //  Clear the color and depth buffer.
-            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
+            ////  Get the OpenGL object.
+            //OpenGL gl = openGLControl.OpenGL;
+            //gl.Enable(OpenGL.GL_TEXTURE_3D);
+            ////  Clear the color and depth buffer.
+            //gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
 
-            //  Load the identity matrix.
-            gl.LoadIdentity();
+            ////  Load the identity matrix.
+            //gl.LoadIdentity();
 
 
-            // rotate affects whatever happens after it is called (this will rotate the plane around the x-axis)
-            gl.MatrixMode(OpenGL.GL_TEXTURE);
-            gl.LoadIdentity();
-            gl.Translate(0, 0.5, 0.5);
-            gl.Rotate(rotation, 1, 0, 0);
-            gl.Translate(0, -0.5, -0.5);
-            gl.MatrixMode(OpenGL.GL_MODELVIEW);
+            //// rotate affects whatever happens after it is called (this will rotate the plane around the x-axis)
+            //gl.MatrixMode(OpenGL.GL_TEXTURE);
+            //gl.LoadIdentity();
+            //gl.Translate(0, 0.5, 0.5);
+            //gl.Rotate(rotation, 1, 0, 0);
+            //gl.Translate(0, -0.5, -0.5);
+            //gl.MatrixMode(OpenGL.GL_MODELVIEW);
 
-            // draw a square plane
-            gl.Begin(OpenGL.GL_QUAD_STRIP);
-            gl.TexCoord(0, 1, 1);
-            gl.Vertex(-2, 2, 0);
+            //// draw a square plane
+            //gl.Begin(OpenGL.GL_QUAD_STRIP);
+            //gl.TexCoord(0, 1, 1);
+            //gl.Vertex(-2, 2, 0);
 
-            gl.TexCoord(1, 1, 1);
-            gl.Vertex(2, 2, 0);
+            //gl.TexCoord(1, 1, 1);
+            //gl.Vertex(2, 2, 0);
 
-            gl.TexCoord(0, 0, .5);
-            gl.Vertex(-2, -2, 0);
+            //gl.TexCoord(0, 0, .5);
+            //gl.Vertex(-2, -2, 0);
 
-            gl.TexCoord(1, 0, .5);
-            gl.Vertex(2, -2, 0);
-            gl.End();
+            //gl.TexCoord(1, 0, .5);
+            //gl.Vertex(2, -2, 0);
+            //gl.End();
 
-            // draw another square behind it
-            gl.Disable(OpenGL.GL_TEXTURE_3D);
-            gl.Color(.0, .0, 1);
-            gl.Begin(OpenGL.GL_QUAD_STRIP);
-            gl.Vertex(-2.1, 2.1, 0.1);
-            gl.Vertex(2.1, 2.1, 0.1);
-            gl.Vertex(-2.1, -2.1, 0.1);
-            gl.Vertex(2.1, -2.1, 0.1);
-            gl.End();
+            //// draw another square behind it
+            //gl.Disable(OpenGL.GL_TEXTURE_3D);
+            //gl.Color(.0, .0, 1);
+            //gl.Begin(OpenGL.GL_QUAD_STRIP);
+            //gl.Vertex(-2.1, 2.1, 0.1);
+            //gl.Vertex(2.1, 2.1, 0.1);
+            //gl.Vertex(-2.1, -2.1, 0.1);
+            //gl.Vertex(2.1, -2.1, 0.1);
+            //gl.End();
 
-            //  Nudge the rotation.
-            rotation += 1.0f;
+            ////  Nudge the rotation.
+            ////rotation += 1f;
         }
 
         /// <summary>
@@ -94,8 +94,6 @@ namespace TheButcher
         /// <param name="args">The <see cref="SharpGL.SceneGraph.OpenGLEventArgs"/> instance containing the event data.</param>
         private void openGLControl_OpenGLInitialized(object sender, OpenGLEventArgs args)
         {
-            //  TODO: Initialise OpenGL here.
-
             //  Get the OpenGL object.
             OpenGL gl = openGLControl.OpenGL;
 
@@ -192,6 +190,134 @@ namespace TheButcher
         }
 
         #endregion
+
+        private void sliderRotate_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            //  Get the OpenGL object.
+            OpenGL gl = openGLControl.OpenGL;
+            gl.Enable(OpenGL.GL_TEXTURE_3D);
+            //  Clear the color and depth buffer.
+            gl.Clear(OpenGL.GL_COLOR_BUFFER_BIT | OpenGL.GL_DEPTH_BUFFER_BIT);
+
+            //  Load the identity matrix.
+            gl.LoadIdentity();
+
+
+            // rotate affects whatever happens after it is called (this will rotate the plane around the x-axis)
+            gl.MatrixMode(OpenGL.GL_TEXTURE);
+            gl.LoadIdentity();
+            //gl.Translate(0, 0.5, 0.5);
+            ////gl.Rotate(sliderRotate.Value, 1, 0, 0);
+            //gl.Rotate(sliderRotate.Value, sliderX.Value, sliderY.Value, sliderZ.Value);
+            //gl.Translate(0, -0.5, -0.5);
+            //gl.MatrixMode(OpenGL.GL_MODELVIEW);
+
+            //// draw a square plane
+            //gl.Begin(OpenGL.GL_QUAD_STRIP);
+            //gl.TexCoord(0, 1, 1);
+            ////gl.TexCoord(0, sliderY.Value/1000, sliderZ.Value/1000);
+            //gl.Vertex(-2, 2, 0);
+
+            //gl.TexCoord(1, 1, 1);
+            ////gl.TexCoord(1, sliderY.Value / 1000, sliderZ.Value / 1000);
+            //gl.Vertex(2, 2, 0);
+
+            //gl.TexCoord(0, 0, .5);
+            //gl.Vertex(-2, -2, 0);
+
+            //gl.TexCoord(1, 0, .5);
+            //gl.Vertex(2, -2, 0);
+            //gl.End();
+
+            //// draw another square behind it
+            //gl.Disable(OpenGL.GL_TEXTURE_3D);
+            //gl.Color(.0, .0, 1);
+            //gl.Begin(OpenGL.GL_QUAD_STRIP);
+            //gl.Vertex(-2.1, 2.1, 0.1);
+            //gl.Vertex(2.1, 2.1, 0.1);
+            //gl.Vertex(-2.1, -2.1, 0.1);
+            //gl.Vertex(2.1, -2.1, 0.1);
+            //gl.End();
+
+
+
+            //gl.LoadIdentity();
+
+            //  Move into a more central position.
+            gl.Translate(1.5f, 0.0f, -.5f);
+
+            //  Rotate the cube.
+            gl.Rotate(rotation, 1.0f, 1.0f, 1.0f);
+
+            //  Provide the cube colors and geometry.
+            gl.Begin(OpenGL.GL_QUADS);
+
+            // Side 1
+            gl.Color(0.0f, 1.0f, 0.0f);
+            gl.TexCoord(1.0f, 1.0f, -1.0f);
+            gl.Vertex(1.0f, 1.0f, -1.0f);
+            gl.TexCoord(-1.0f, 1.0f, -1.0f);
+            gl.Vertex(-1.0f, 1.0f, -1.0f);
+            gl.TexCoord(-1.0f, 1.0f, 1.0f);
+            gl.Vertex(-1.0f, 1.0f, 1.0f);
+            gl.TexCoord(1.0f, 1.0f, 1.0f);
+            gl.Vertex(1.0f, 1.0f, 1.0f);
+
+            // Side 2
+            gl.TexCoord(1.0f, -1.0f, 1.0f);
+            gl.Vertex(1.0f, -1.0f, 1.0f);
+            gl.TexCoord(-1.0f, -1.0f, 1.0f);
+            gl.Vertex(-1.0f, -1.0f, 1.0f);
+            gl.TexCoord(-1.0f, -1.0f, -1.0f);
+            gl.Vertex(-1.0f, -1.0f, -1.0f);
+            gl.TexCoord(1.0f, -1.0f, -1.0f);
+            gl.Vertex(1.0f, -1.0f, -1.0f);
+
+            // Side 3
+            gl.TexCoord(1.0f, 1.0f, 1.0f);
+            gl.Vertex(1.0f, 1.0f, 1.0f);
+            gl.TexCoord(-1.0f, 1.0f, 1.0f);
+            gl.Vertex(-1.0f, 1.0f, 1.0f);
+            gl.TexCoord(-1.0f, -1.0f, 1.0f);
+            gl.Vertex(-1.0f, -1.0f, 1.0f);
+            gl.TexCoord(1.0f, -1.0f, 1.0f);
+            gl.Vertex(1.0f, -1.0f, 1.0f);
+
+            // Side 4
+            gl.TexCoord(1.0f, -1.0f, -1.0f);
+            gl.Vertex(1.0f, -1.0f, -1.0f);
+            gl.TexCoord(-1.0f, -1.0f, -1.0f);
+            gl.Vertex(-1.0f, -1.0f, -1.0f);
+            gl.TexCoord(-1.0f, 1.0f, -1.0f);
+            gl.Vertex(-1.0f, 1.0f, -1.0f);
+            gl.TexCoord(1.0f, 1.0f, -1.0f);
+            gl.Vertex(1.0f, 1.0f, -1.0f);
+
+            // Side 5
+            gl.TexCoord(-1.0f, 1.0f, 1.0f);
+            gl.Vertex(-1.0f, 1.0f, 1.0f);
+            gl.TexCoord(-1.0f, 1.0f, -1.0f);
+            gl.Vertex(-1.0f, 1.0f, -1.0f);
+            gl.TexCoord(-1.0f, -1.0f, -1.0f);
+            gl.Vertex(-1.0f, -1.0f, -1.0f);
+            gl.TexCoord(-1.0f, -1.0f, 1.0f);
+            gl.Vertex(-1.0f, -1.0f, 1.0f);
+
+            // Side 6
+            gl.TexCoord(1.0f, 1.0f, -1.0f);
+            gl.Vertex(1.0f, 1.0f, -1.0f);
+            gl.TexCoord(1.0f, 1.0f, 1.0f);
+            gl.Vertex(1.0f, 1.0f, 1.0f);
+            gl.TexCoord(1.0f, -1.0f, 1.0f);
+            gl.Vertex(1.0f, -1.0f, 1.0f);
+            gl.TexCoord(1.0f, -1.0f, -1.0f);
+            gl.Vertex(1.0f, -1.0f, -1.0f);
+
+            gl.End();
+
+            //  Nudge the rotation.
+            rotation += 1f;
+        }
 
     }
 }
